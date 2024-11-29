@@ -51,29 +51,37 @@ with app.app_context():
 
     # LAB 4 --------------------------------------------------
 
-    # # write a query to insert 3 records into the Courses table
-    # query_1 = """ """
-    # db.session.execute(text(query_1))
-    # db.session.commit()
+    # write a query to insert 3 records into the Courses table
+    query_1 = """INSERT INTO Courses (course_name, instructor)
+    VALUES
+       ('Writing for College', 'Dr. Ice'),
+       ('Software Dev', 'Prof. Wu'),
+       ('Cybersecurity', 'Dr. Joan'); """
+    db.session.execute(text(query_1))
+    db.session.commit()
 
-    # # write a query to select all records from the Courses table
-    # query_2 = """ """
-    # courses = db.session.execute(text(query_2))
-    # print(f"\n\n----------- Courses Table")
-    # for course in courses:
-    #     print(course)
+    # write a query to select all records from the Courses table
+    query_2 = """SELECT *
+                  FROM Courses """
+    courses = db.session.execute(text(query_2))
+    print(f"\n\n----------- Courses Table")
+    for course in courses:
+        print(course)
 
-    # # write a query to update 1 record in the Courses table
-    # query_3 = """ """
-    # db.session.execute(text(query_3))
-    # db.session.commit()
+    # write a query to update 1 record in the Courses table
+    query_3 = """UPDATE Courses
+                  SET instructor = 'Dr. Kuzan'
+                  WHERE course_id = 101; """
+    db.session.execute(text(query_3))
+    db.session.commit()
 
-    # # write a query to delete 1 record in the Courses table
-    # query_4 = """ """
-    # db.session.execute(text(query_4))
-    # db.session.commit()
+    # write a query to delete 1 record in the Courses table
+    query_4 = """DELETE FROM Courses
+                  WHERE course_id = 103; """
+    db.session.execute(text(query_4))
+    db.session.commit()
 
-    # print(f"\n\n----------- Courses Table")
-    # courses = db.session.execute(text(query_2))
-    # for course in courses:
-    #     print(course)
+    print(f"\n\n----------- Courses Table")
+    courses = db.session.execute(text(query_2))
+    for course in courses:
+        print(course)
